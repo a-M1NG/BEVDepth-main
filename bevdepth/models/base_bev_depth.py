@@ -3,7 +3,7 @@ from torch import nn
 from bevdepth.layers.backbones.base_lss_fpn import BaseLSSFPN
 from bevdepth.layers.heads.bev_depth_head import BEVDepthHead
 
-__all__ = ['BaseBEVDepth']
+__all__ = ["BaseBEVDepth"]
 
 
 class BaseBEVDepth(nn.Module):
@@ -53,10 +53,9 @@ class BaseBEVDepth(nn.Module):
             tuple(list[dict]): Output results for tasks.
         """
         if self.is_train_depth and self.training:
-            x, depth_pred = self.backbone(x,
-                                          mats_dict,
-                                          timestamps,
-                                          is_return_depth=True)
+            x, depth_pred = self.backbone(
+                x, mats_dict, timestamps, is_return_depth=True
+            )
             preds = self.head(x)
             return preds, depth_pred
         else:
